@@ -1,0 +1,18 @@
+# FireAcademy — Cursos de combate contra incendios
+
+## Archivos
+- `index.html`: estructura de la página y ventanas de administración.
+- `styles.css`: diseño visual adaptable a computadora, tableta y celular.
+- `app.js`: cursos de ejemplo, búsqueda, filtros, alta/edición/eliminación, imágenes, exportación e importación de respaldos.
+
+## Cómo abrir en VS Code
+1. Descomprime la carpeta `cursos-incendios`.
+2. Abre VS Code y selecciona **Archivo > Abrir carpeta**.
+3. Abre `index.html`.
+4. Si tienes la extensión **Live Server**, haz clic derecho en `index.html` y elige **Open with Live Server**. También puedes abrir el archivo directamente en el navegador.
+
+## Uso
+Pulsa **Administrar** para agregar, editar o eliminar cursos. Los cambios se guardan en el almacenamiento local del navegador. Usa **Exportar JSON** para guardar un respaldo y **Importar JSON** para restaurarlo.
+
+## Importante
+Esta es una versión local de demostración. No tiene autenticación ni base de datos compartida. No la publiques como panel administrativo seguro sin agregar inicio de sesión, servidor y base de datos. Los precios y cursos de ejemplo son datos demostrativos: edítalos antes de usar el sitio públicamente.

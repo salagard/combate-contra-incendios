@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Cursos de capacitación en combate contra incendios, prevención y seguridad industrial.">
+  <title>RAMONFIRE  | Capacitación contra Incendios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio">
+      <span class="brand-icon">🔥</span>
+      <span>FIRE<span class="accent">ACADEMY</span><small>CAPACITACIÓN Y SEGURIDAD</small></span>
+    </a>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#nosotros">Nosotros</a>
+      <button class="btn btn-outline" id="adminBtn">Administrar</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="eyebrow">FORMACIÓN · PREVENCIÓN · SEGURIDAD</span>
+        <h1>Preparados para actuar.<br><span class="accent">Capacitados para reaccionar.</span></h1>
+        <p>Capacitación en combate contra incendios, prevención de riesgos y respuesta ante emergencias.</p>
+        <a class="btn btn-primary" href="#cursos">Explorar cursos ↗</a>
+        <div class="hero-points">
+          <span>✓ Formación práctica</span><span>✓ Seguridad industrial</span><span>✓ Cultura preventiva</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="fire-circle">🔥</div>
+        <div class="art-card"><span>FORMACIÓN ESPECIALIZADA</span><strong>La seguridad comienza con la preparación.</strong></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>01</strong><span>Prevención</span></div>
+      <div><strong>02</strong><span>Capacitación</span></div>
+      <div><strong>03</strong><span>Respuesta</span></div>
+      <div><strong>04</strong><span>Seguridad</span></div>
+    </section>
+
+    <section class="section" id="cursos">
+      <div class="section-heading">
+        <div><span class="eyebrow">NUESTRA OFERTA</span><h2>Cursos de capacitación</h2><p>Encuentra la formación que necesitas.</p></div>
+        <span class="course-count" id="courseCount">6 cursos</span>
+      </div>
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Buscar un curso..." aria-label="Buscar cursos">
+        <select id="categoryFilter" aria-label="Filtrar por categoría">
+          <option value="">Todas las categorías</option>
+          <option value="Combate contra incendios">Combate contra incendios</option>
+          <option value="Prevención">Prevención</option>
+          <option value="Emergencias">Emergencias</option>
+          <option value="Brigadas">Brigadas</option>
+        </select>
+      </div>
+      <div class="course-grid" id="courseGrid"></div>
+      <p class="empty hidden" id="emptyMessage">No se encontraron cursos. Intenta con otra búsqueda.</p>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div><span class="eyebrow">NUESTRO COMPROMISO</span><h2>La preparación puede marcar la diferencia.</h2></div>
+      <p>Promovemos una cultura de prevención mediante capacitación, prácticas supervisadas y formación en seguridad. Los cursos deben impartirse con instructores competentes y equipos adecuados.</p>
+    </section>
+
+    <section class="contact">
+      <div><span class="eyebrow">¿NECESITAS CAPACITACIÓN?</span><h2>Solicita información sobre nuestros cursos.</h2><p>Consulta fechas, disponibilidad, costos y modalidad.</p></div>
+      <a class="btn btn-primary" id="contactBtn" href="#cursos">Consultar cursos ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#inicio"><span class="brand-icon">🔥</span><span>FIRE<span class="accent">ACADEMY</span></span></a>
+    <p>© <span id="year"></span> FireAcademy. Capacitación y seguridad.</p>
+  </footer>
+
+  <dialog id="adminDialog" class="dialog">
+    <div class="dialog-header"><div><span class="eyebrow">PANEL DE CONTROL</span><h2>Administrar cursos</h2></div><button class="icon-btn" id="closeAdmin" aria-label="Cerrar">✕</button></div>
+    <div class="admin-toolbar"><p>Agrega cursos o modifica los existentes.</p><button class="btn btn-primary" id="newCourseBtn">+ Nuevo curso</button></div>
+    <div id="adminCourseList" class="admin-list"></div>
+    <div class="data-tools"><h3>Respaldo de información</h3><p>Exporta los cursos para guardarlos o importarlos después.</p><div class="tool-buttons"><button class="btn btn-outline" id="exportBtn">Exportar JSON</button><button class="btn btn-outline" id="importBtn">Importar JSON</button><input type="file" id="importFile" accept=".json,application/json" hidden></div></div>
+    <p class="notice">Esta versión guarda los cambios en este navegador. No incluye contraseña ni sincroniza otros equipos.</p>
+  </dialog>
+
+  <dialog id="formDialog" class="dialog">
+    <div class="dialog-header"><div><span class="eyebrow">CONTENIDO DEL CATÁLOGO</span><h2 id="formTitle">Nuevo curso</h2></div><button class="icon-btn" id="closeForm" aria-label="Cerrar">✕</button></div>
+    <form id="courseForm">
+      <input type="hidden" id="courseId">
+      <label for="title">Nombre del curso *</label>
+      <input id="title" required maxlength="120" placeholder="Ej. Combate contra incendios nivel básico">
+      <label for="category">Categoría *</label>
+      <select id="category" required>
+        <option value="Combate contra incendios">Combate contra incendios</option><option value="Prevención">Prevención</option><option value="Emergencias">Emergencias</option><option value="Brigadas">Brigadas</option>
+      </select>
+      <label for="description">Descripción *</label>
+      <textarea id="description" required maxlength="1200" rows="4" placeholder="Describe el contenido y los objetivos del curso."></textarea>
+      <div class="form-row"><div><label for="duration">Duración</label><input id="duration" maxlength="60" placeholder="Ej. 8 horas"></div><div><label for="modality">Modalidad</label><select id="modality"><option>Presencial</option><option>En línea</option><option>Mixta</option></select></div></div>
+      <div class="form-row"><div><label for="price">Precio (MXN)</label><input id="price" type="number" min="0" step="0.01" placeholder="Ej. 1500"></div><div><label for="date">Próxima fecha</label><input id="date" type="date"></div></div>
+      <label for="location">Lugar o sede</label><input id="location" maxlength="160" placeholder="Ej. Instalaciones del centro de capacitación">
+      <label for="imageFile">Imagen del curso</label><input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp"><small class="help">Usa imágenes JPG, PNG o WebP de hasta 1.5 MB.</small><div id="imagePreview" class="image-preview"></div>
+      <label for="requirements">Requisitos o equipo necesario</label><textarea id="requirements" rows="2" maxlength="600" placeholder="Ej. Ropa de trabajo y equipo de protección requerido."></textarea>
+      <label class="checkbox-label"><input id="featured" type="checkbox"> Destacar este curso en el catálogo</label>
+      <div class="form-actions"><button type="button" class="btn btn-outline" id="cancelForm">Cancelar</button><button type="submit" class="btn btn-primary">Guardar curso</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="detailDialog" class="dialog">
+    <div class="dialog-header"><h2 id="detailTitle">Información del curso</h2><button class="icon-btn" id="closeDetail" aria-label="Cerrar">✕</button></div>
+    <div id="detailContent"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
